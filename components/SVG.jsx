@@ -18,12 +18,12 @@ export function TopWaveSVG() {
 	);
 }
 
-export function BottomWaveSVG() {
+export function BottomWaveSVG(height = 200, fillColor = 'white') {
 	return (
 		<View style={styles.wavyBgBottom}>
 			<Svg
-				width={width} // ancho completo de la pantalla
-				height={200} // alto fijo como tu h-48/h-64
+				width={width}
+				height={height}
 				viewBox="0 0 500 200"
 				preserveAspectRatio="none"
 			>
@@ -32,6 +32,27 @@ export function BottomWaveSVG() {
 					fill="white"
 				/>
 			</Svg>
+		</View>
+	);
+}
+
+export function WavyHeader(props) {
+	return (
+		<View style={styles.wavyHeader}>
+			<View style={styles.headerContent}>{props.children}</View>
+			<View style={styles.headerWave}>
+				<Svg
+					width={width}
+					height={50}
+					viewBox="0 0 500 200"
+					preserveAspectRatio="none"
+				>
+					<Path
+						d="M0,200 L500,200 L500,100 Q375,20 250,100 T0,80 Z"
+						fill="#F7F9FC"
+					/>
+				</Svg>
+			</View>
 		</View>
 	);
 }
@@ -50,5 +71,24 @@ const styles = StyleSheet.create({
 		left: 0,
 		width: '100%',
 		zIndex: 1,
+	},
+	wavyHeader: {
+		backgroundColor: '#FF6B6B',
+		position: 'relative',
+		width: '100%',
+		height: 200,
+		flexDirection: 'column',
+	},
+	headerContent: {
+		flex: 1,
+		paddingTop: 72,
+		paddingHorizontal: 24,
+		paddingBottom: 20,
+	},
+	headerWave: {
+		position: 'absolute',
+		bottom: -1,
+		left: 0,
+		width: '100%',
 	},
 });
