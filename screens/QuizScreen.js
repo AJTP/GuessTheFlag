@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { useState, useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, Animated } from 'react-native';
 import { generateQuestion } from '../services/flagService';
 import FlagButton from '../components/FlagButton';
 import { TopLightWaveSVG, WavyHeader } from '../components/SVG';
@@ -9,6 +9,8 @@ export default function QuizScreen({ navigation }) {
 	const [selected, setSelected] = useState(null);
 	const [score, setScore] = useState(0);
 	const [questionCount, setQuestionCount] = useState(0);
+	const slideAnim = useRef(new Animated.Value(100)).current;
+	const opacityAnim = useRef(new Animated.Value(0)).current;
 	const totalQuestions = 3;
 
 	useEffect(() => {
@@ -21,13 +23,47 @@ export default function QuizScreen({ navigation }) {
 		if (flag.countryName === question.correct.countryName) {
 			setScore(score + 1);
 		}
+
+		// Animar la entrada de la burbuja
+		Animated.parallel([
+			Animated.spring(slideAnim, {
+				toValue: 0,
+				useNativeDriver: true,
+				tension: 100,
+				friction: 8,
+			}),
+			Animated.timing(opacityAnim, {
+				toValue: 1,
+				duration: 300,
+				useNativeDriver: true,
+			}),
+		]).start();
+
 		setTimeout(() => {
-			if (questionCount + 1 < totalQuestions) {
-				setQuestionCount(questionCount + 1);
-			} else {
-				navigation.navigate('Result', { score, total: totalQuestions });
-			}
-		}, 1000); // 1 segundo para ver feedback
+			// Animar la salida
+			Animated.parallel([
+				Animated.timing(slideAnim, {
+					toValue: -100,
+					duration: 200,
+					useNativeDriver: true,
+				}),
+				Animated.timing(opacityAnim, {
+					toValue: 0,
+					duration: 200,
+					useNativeDriver: true,
+				}),
+			]).start(() => {
+				// Reset animation values
+				slideAnim.setValue(100);
+				opacityAnim.setValue(0);
+
+				if (questionCount + 1 < totalQuestions) {
+					setQuestionCount(questionCount + 1);
+				} else {
+					navigation.navigate('Result', { score, total: totalQuestions });
+				}
+			});
+		}, 1500);
 	};
 
 	if (!question) return null;
@@ -71,11 +107,25 @@ export default function QuizScreen({ navigation }) {
 					))}
 				</View>
 				{selected && (
-					<Text style={styles.feedbackText}>
-						{selected.countryName === question.correct.countryName
-							? '✅ Correcto'
-							: '❌ Incorrecto'}
-					</Text>
+					<Animated.View
+						style={[
+							styles.feedbackBubble,
+							{
+								backgroundColor:
+									selected.countryName === question.correct.countryName
+										? '#10B981'
+										: '#EF4444',
+								transform: [{ translateY: slideAnim }],
+								opacity: opacityAnim,
+							},
+						]}
+					>
+						<Text style={styles.feedbackIcon}>
+							{selected.countryName === question.correct.countryName
+								? '✓'
+								: '✕'}
+						</Text>
+					</Animated.View>
 				)}
 			</View>
 		</View>
@@ -84,13 +134,15 @@ export default function QuizScreen({ navigation }) {
 
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
 		backgroundColor: '#f5f5f5',
 	},
 	content: {
-		justifyContent: 'center',
+		flex: 1,
+		justifyContent: 'flex-start',
 		alignItems: 'center',
 		paddingHorizontal: 20,
-		paddingTop: 20,
+		paddingTop: 40,
 	},
 	progressText: {
 		color: 'white',
@@ -126,10 +178,26 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		gap: 15,
 	},
-	feedbackText: {
-		marginTop: 20,
-		fontSize: 18,
-		textAlign: 'center',
-		fontWeight: '600',
+	feedbackBubble: {
+		position: 'absolute',
+		bottom: 50,
+		width: 80,
+		height: 80,
+		borderRadius: 40,
+		justifyContent: 'center',
+		alignItems: 'center',
+		shadowColor: '#000',
+		shadowOffset: {
+			width: 0,
+			height: 4,
+		},
+		shadowOpacity: 0.3,
+		shadowRadius: 8,
+		elevation: 10,
+	},
+	feedbackIcon: {
+		fontSize: 40,
+		color: 'white',
+		fontWeight: 'bold',
 	},
 });
