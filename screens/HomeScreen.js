@@ -1,39 +1,29 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { BottomWaveSVG, TopWaveSVG } from '../components/SVG';
+import PillButton from '../components/PillButton';
 
 export default function HomeScreen({ navigation }) {
 	return (
 		<View style={styles.container}>
-			<View style={styles.wavyBgTop}>
-				<TopWaveSVG />
-			</View>
+			<TopWaveSVG />
 			<Text style={styles.title}>GuessTheFlag!</Text>
 
 			<View style={styles.buttonsContainer}>
-				<Pressable
-					style={styles.button}
+				<PillButton
+					title="Iniciar Quiz"
 					onPress={() => navigation.navigate('Quiz')}
-				>
-					<Text style={styles.buttonText}>Comenzar Quiz</Text>
-				</Pressable>
-
-				<Pressable
-					style={styles.button}
+				/>
+				<PillButton
+					title="Opciones"
 					onPress={() => alert('Opciones no implementadas aún')}
-				>
-					<Text style={styles.buttonText}>Opciones</Text>
-				</Pressable>
-
-				<Pressable
-					style={styles.button}
+				/>
+				<PillButton
+					title="Acerca de"
 					onPress={() => alert('Acerca de la app')}
-				>
-					<Text style={styles.buttonText}>Acerca de</Text>
-				</Pressable>
+				/>
 			</View>
-			<View style={styles.wavyBgBottom}>
-				<BottomWaveSVG />
-			</View>
+
+			<BottomWaveSVG />
 		</View>
 	);
 }
@@ -60,34 +50,5 @@ const styles = StyleSheet.create({
 		gap: 20,
 		width: '100%',
 		alignItems: 'center',
-	},
-	button: {
-		backgroundColor: '#3CC7C1',
-		paddingHorizontal: 10,
-		paddingVertical: 18,
-		borderRadius: 50,
-		marginBottom: 20,
-		width: '80%',
-		boxShadow: '0 12px 0px 0px #2EA8A3, 0 20px 30px rgba(0,0,0,0.1)',
-	},
-	buttonText: {
-		color: '#fff',
-		textAlign: 'center',
-		fontWeight: '800',
-		fontSize: 24,
-	},
-	wavyBgTop: {
-		position: 'absolute',
-		top: 0,
-		left: 0,
-		width: '100%',
-		zIndex: 1,
-	},
-	wavyBgBottom: {
-		position: 'absolute',
-		bottom: 0,
-		left: 0,
-		width: '100%',
-		zIndex: 1,
 	},
 });
