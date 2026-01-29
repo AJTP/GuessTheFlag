@@ -1,9 +1,10 @@
 import { Svg, Path } from 'react-native-svg';
 import { Dimensions, View, StyleSheet } from 'react-native';
+import { colors } from '../styles/theme';
 
 const { width } = Dimensions.get('window');
 
-export function TopWaveSVG({ height = 200, fillColor = 'white' }) {
+export function TopWaveSVG({ height = 200, fillColor = colors.background }) {
 	return (
 		<View style={styles.wavyBgTop}>
 			<Svg
@@ -21,7 +22,7 @@ export function TopWaveSVG({ height = 200, fillColor = 'white' }) {
 	);
 }
 
-export function BottomWaveSVG({ height = 200, fillColor = 'white' }) {
+export function BottomWaveSVG({ height = 200, fillColor = colors.background }) {
 	return (
 		<View style={styles.wavyBgBottom}>
 			<Svg
@@ -52,7 +53,7 @@ export function WavyHeader(props) {
 				>
 					<Path
 						d="M0,200 L500,200 L500,100 Q375,20 250,100 T0,80 Z"
-						fill="#F7F9FC"
+						fill={colors.background}
 					/>
 				</Svg>
 			</View>
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
 		zIndex: 10,
 	},
 	wavyHeader: {
-		backgroundColor: '#FF6B6B',
+		backgroundColor: colors.primary,
 		position: 'relative',
 		width: '100%',
 		height: 200,

@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { BottomWaveSVG, TopWaveSVG } from '../components/SVG';
 import PillButton from '../components/PillButton';
+import { colors } from '../styles/theme';
 
 export default function HomeScreen({ navigation }) {
 	return (
@@ -23,14 +24,14 @@ export default function HomeScreen({ navigation }) {
 				/>
 			</View>
 
-			<BottomWaveSVG height={150} fillColor="#F7F9FC" />
+			<BottomWaveSVG />
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: '#FF4B4B',
+		backgroundColor: colors.primaryDark,
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontSize: 48,
-		color: '#fff',
+		color: colors.textLight,
 		fontWeight: '800',
 		marginBottom: 40,
 		textAlign: 'center',

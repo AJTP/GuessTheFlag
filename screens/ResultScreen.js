@@ -1,4 +1,5 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { colors } from '../styles/theme';
 
 export default function ResultScreen({ route, navigation }) {
 	const { score, total } = route.params;
@@ -36,13 +37,13 @@ const styles = StyleSheet.create({
 	},
 	score: { fontSize: 24, marginBottom: 40, textAlign: 'center' },
 	button: {
-		backgroundColor: '#27ae60',
+		backgroundColor: colors.secondary,
 		padding: 15,
 		borderRadius: 10,
 		width: '80%',
 	},
 	buttonText: {
-		color: '#fff',
+		color: colors.textLight,
 		textAlign: 'center',
 		fontWeight: 'bold',
 		fontSize: 18,

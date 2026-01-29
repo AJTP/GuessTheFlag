@@ -1,4 +1,5 @@
 import { Text, Pressable, StyleSheet } from 'react-native';
+import { colors } from '../styles/theme';
 
 export default function PillButton({ title, onPress }) {
 	return (
@@ -10,16 +11,16 @@ export default function PillButton({ title, onPress }) {
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: '#3CC7C1',
+		backgroundColor: colors.secondary,
 		paddingHorizontal: 10,
 		paddingVertical: 18,
 		borderRadius: 50,
 		marginBottom: 20,
 		width: '80%',
-		boxShadow: '0 12px 0px 0px #2EA8A3, 0 20px 30px rgba(0,0,0,0.1)',
+		boxShadow: `0 12px 0px 0px ${colors.secondaryDark}, 0 20px 30px rgba(0,0,0,0.1)`,
 	},
 	buttonText: {
-		color: '#fff',
+		color: colors.textLight,
 		textAlign: 'center',
 		fontWeight: '800',
 		fontSize: 24,

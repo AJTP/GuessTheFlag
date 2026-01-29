@@ -1,4 +1,5 @@
 import { Pressable, Image, StyleSheet } from 'react-native';
+import { colors } from '../styles/theme';
 
 export default function FlagButton({ flag, onPress, selected, correct }) {
 	const isCorrect = selected && flag.countryName === correct.countryName;
@@ -26,12 +27,12 @@ const styles = StyleSheet.create({
 		height: 114,
 		margin: 8,
 		borderWidth: 2,
-		borderColor: '#ddd',
+		borderColor: colors.borderColor,
 		borderRadius: 12,
 		overflow: 'hidden',
-		backgroundColor: '#F7F9FC',
+		backgroundColor: colors.background,
 		padding: 8,
-		shadowColor: '#000',
+		shadowColor: colors.black,
 		shadowOffset: {
 			width: 0,
 			height: 2,
@@ -45,6 +46,6 @@ const styles = StyleSheet.create({
 		height: '100%',
 		resizeMode: 'contain',
 	},
-	correct: { borderColor: 'green', borderWidth: 4 },
-	incorrect: { borderColor: 'red', borderWidth: 4 },
+	correct: { borderColor: colors.success, borderWidth: 4 },
+	incorrect: { borderColor: colors.error, borderWidth: 4 },
 });

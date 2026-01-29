@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Animated } from 'react-native';
 import { generateQuestion } from '../services/flagService';
 import FlagButton from '../components/FlagButton';
 import { TopLightWaveSVG, WavyHeader } from '../components/SVG';
+import { colors } from '../styles/theme';
 
 export default function QuizScreen({ navigation }) {
 	const [question, setQuestion] = useState(null);
@@ -99,7 +100,7 @@ export default function QuizScreen({ navigation }) {
 			<View style={styles.content}>
 				<Text style={styles.countryName}>
 					¿Cuál es la bandera de{' '}
-					<Text style={{ color: '#FF4B4B' }}>
+					<Text style={{ color: colors.primaryDark, fontWeight: 'bold' }}>
 						{question.correct.countryName}
 					</Text>
 					?
@@ -122,8 +123,8 @@ export default function QuizScreen({ navigation }) {
 							{
 								backgroundColor:
 									selected.countryName === question.correct.countryName
-										? '#10B981'
-										: '#EF4444',
+										? colors.success
+										: colors.error,
 								transform: [{ translateY: slideAnim }],
 								opacity: opacityAnim,
 							},
@@ -144,7 +145,7 @@ export default function QuizScreen({ navigation }) {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#f5f5f5',
+		backgroundColor: colors.background,
 	},
 	content: {
 		flex: 1,
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
 		paddingTop: 40,
 	},
 	progressText: {
-		color: 'white',
+		color: colors.textLight,
 		fontSize: 16,
 		fontWeight: '800',
 	},
@@ -171,7 +172,7 @@ const styles = StyleSheet.create({
 		width: '100%',
 	},
 	progressFill: {
-		backgroundColor: 'white',
+		backgroundColor: colors.backgroundSecondary,
 		height: '100%',
 		borderRadius: 10,
 	},
@@ -195,7 +196,7 @@ const styles = StyleSheet.create({
 		borderRadius: 40,
 		justifyContent: 'center',
 		alignItems: 'center',
-		shadowColor: '#000',
+		shadowColor: colors.black,
 		shadowOffset: {
 			width: 0,
 			height: 4,
@@ -206,7 +207,7 @@ const styles = StyleSheet.create({
 	},
 	feedbackIcon: {
 		fontSize: 40,
-		color: 'white',
+		color: colors.background,
 		fontWeight: 'bold',
 	},
 });
