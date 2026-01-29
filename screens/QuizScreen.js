@@ -20,8 +20,13 @@ export default function QuizScreen({ navigation }) {
 
 	const handleSelect = flag => {
 		setSelected(flag);
-		if (flag.countryName === question.correct.countryName) {
-			setScore(score + 1);
+
+		// Calcular el nuevo score inmediatamente
+		const isCorrect = flag.countryName === question.correct.countryName;
+		const newScore = isCorrect ? score + 1 : score;
+
+		if (isCorrect) {
+			setScore(newScore);
 		}
 
 		// Animar la entrada de la burbuja
@@ -60,7 +65,11 @@ export default function QuizScreen({ navigation }) {
 				if (questionCount + 1 < totalQuestions) {
 					setQuestionCount(questionCount + 1);
 				} else {
-					navigation.navigate('Result', { score, total: totalQuestions });
+					// Usar el newScore calculado, no el score del estado
+					navigation.navigate('Result', {
+						score: newScore,
+						total: totalQuestions,
+					});
 				}
 			});
 		}, 1500);
