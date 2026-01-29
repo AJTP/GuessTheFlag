@@ -23,7 +23,7 @@ export default function HomeScreen({ navigation }) {
 				/>
 			</View>
 
-			<BottomWaveSVG />
+			<BottomWaveSVG height={150} fillColor="#F7F9FC" />
 		</View>
 	);
 }

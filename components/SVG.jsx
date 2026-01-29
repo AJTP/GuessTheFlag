@@ -3,22 +3,25 @@ import { Dimensions, View, StyleSheet } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-export function TopWaveSVG() {
+export function TopWaveSVG({ height = 200, fillColor = 'white' }) {
 	return (
 		<View style={styles.wavyBgTop}>
 			<Svg
 				width={width} // ancho completo de la pantalla
-				height={200} // alto fijo como tu h-48/h-64
+				height={height} // alto fijo como tu h-48/h-64
 				viewBox="0 0 500 200"
 				preserveAspectRatio="none"
 			>
-				<Path d="M0,0 L500,0 L500,100 Q375,180 250,100 T0,120 Z" fill="white" />
+				<Path
+					d="M0,0 L500,0 L500,100 Q375,180 250,100 T0,120 Z"
+					fill={fillColor}
+				/>
 			</Svg>
 		</View>
 	);
 }
 
-export function BottomWaveSVG(height = 200, fillColor = 'white') {
+export function BottomWaveSVG({ height = 200, fillColor = 'white' }) {
 	return (
 		<View style={styles.wavyBgBottom}>
 			<Svg
@@ -29,7 +32,7 @@ export function BottomWaveSVG(height = 200, fillColor = 'white') {
 			>
 				<Path
 					d="M0,200 L500,200 L500,100 Q375,20 250,100 T0,80 Z"
-					fill="white"
+					fill={fillColor}
 				/>
 			</Svg>
 		</View>
@@ -70,7 +73,7 @@ const styles = StyleSheet.create({
 		bottom: 0,
 		left: 0,
 		width: '100%',
-		zIndex: 1,
+		zIndex: 10,
 	},
 	wavyHeader: {
 		backgroundColor: '#FF6B6B',
