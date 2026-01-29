@@ -14,10 +14,27 @@ export default function FlagButton({ flag, onPress, disabled }) {
 
 const styles = StyleSheet.create({
 	button: {
+		width: 160,
+		height: 114,
 		margin: 8,
-		borderWidth: 1,
-		borderColor: '#ccc',
-		borderRadius: 10,
+		borderWidth: 2,
+		borderColor: '#ddd',
+		borderRadius: 12,
+		overflow: 'hidden',
+		backgroundColor: '#F7F9FC',
+		padding: 8,
+		shadowColor: '#000',
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		shadowOpacity: 0.1,
+		shadowRadius: 3,
+		elevation: 3,
 	},
-	image: { width: 240, height: 160, resizeMode: 'contain' },
+	image: {
+		width: '100%',
+		height: '100%',
+		resizeMode: 'contain',
+	},
 });
