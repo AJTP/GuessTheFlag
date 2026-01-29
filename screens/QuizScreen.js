@@ -65,7 +65,8 @@ export default function QuizScreen({ navigation }) {
 							key={flag.countryName}
 							flag={flag}
 							onPress={() => handleSelect(flag)}
-							disabled={!!selected}
+							selected={selected}
+							correct={question.correct}
 						/>
 					))}
 				</View>

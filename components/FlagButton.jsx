@@ -1,11 +1,19 @@
 import { Pressable, Image, StyleSheet } from 'react-native';
 
-export default function FlagButton({ flag, onPress, disabled }) {
+export default function FlagButton({ flag, onPress, selected, correct }) {
+	const isCorrect = selected && flag.countryName === correct.countryName;
+	const incorrect =
+		selected?.countryName === flag.countryName &&
+		flag.countryName !== correct.countryName;
 	return (
 		<Pressable
-			style={[styles.button, disabled && { opacity: 0.5 }]}
+			style={[
+				styles.button,
+				isCorrect && styles.correct,
+				incorrect && styles.incorrect,
+			]}
 			onPress={() => onPress(flag)}
-			disabled={disabled}
+			disabled={!!selected}
 		>
 			<Image source={flag.image} style={styles.image} />
 		</Pressable>
@@ -37,4 +45,6 @@ const styles = StyleSheet.create({
 		height: '100%',
 		resizeMode: 'contain',
 	},
+	correct: { borderColor: 'green', borderWidth: 4 },
+	incorrect: { borderColor: 'red', borderWidth: 4 },
 });
