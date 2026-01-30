@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-start',
 		alignItems: 'center',
 		paddingHorizontal: spacing.lg,
-		paddingTop: spacing.xxl,
+		paddingTop: spacing.l,
 	},
 	scoreCircle: {
 		width: 160,
