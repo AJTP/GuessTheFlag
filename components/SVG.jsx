@@ -1,6 +1,6 @@
 import { Svg, Path } from 'react-native-svg';
 import { Dimensions, View, StyleSheet } from 'react-native';
-import { colors } from '../styles/theme';
+import { colors, spacing } from '../styles/theme';
 
 const { width } = Dimensions.get('window');
 
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
 	headerContent: {
 		flex: 1,
 		paddingTop: 80,
-		paddingHorizontal: 24,
-		paddingBottom: 20,
+		paddingHorizontal: spacing.lg,
+		paddingBottom: spacing.lg,
 	},
 	headerWave: {
 		position: 'absolute',

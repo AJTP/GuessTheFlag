@@ -1,5 +1,5 @@
 import { Text, Pressable, StyleSheet } from 'react-native';
-import { colors } from '../styles/theme';
+import { colors, typography, spacing } from '../styles/theme';
 
 export default function PillButton({ title, onPress }) {
 	return (
@@ -12,10 +12,10 @@ export default function PillButton({ title, onPress }) {
 const styles = StyleSheet.create({
 	button: {
 		backgroundColor: colors.secondary,
-		paddingHorizontal: 10,
-		paddingVertical: 18,
-		borderRadius: 50,
-		marginBottom: 20,
+		paddingHorizontal: spacing.sm,
+		paddingVertical: spacing.md,
+		borderRadius: spacing.xxl,
+		marginBottom: spacing.lg,
 		width: '80%',
 		boxShadow: `0 12px 0px 0px ${colors.secondaryDark}, 0 20px 30px rgba(0,0,0,0.1)`,
 	},
@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
 		color: colors.textLight,
 		textAlign: 'center',
 		fontWeight: '800',
-		fontSize: 24,
+		fontSize: typography.fontSizes.xxl,
 	},
 });

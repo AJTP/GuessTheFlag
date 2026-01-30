@@ -1,5 +1,5 @@
 import { Pressable, Image, StyleSheet, Dimensions } from 'react-native';
-import { colors } from '../styles/theme';
+import { colors, spacing } from '../styles/theme';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -34,27 +34,27 @@ const styles = StyleSheet.create({
 	button: {
 		width: flagWidth,
 		height: flagHeight,
-		margin: 8,
-		borderWidth: 2,
+		margin: spacing.sm,
+		borderWidth: spacing.xs,
 		borderColor: colors.borderColor,
-		borderRadius: 12,
+		borderRadius: spacing.md,
 		overflow: 'hidden',
 		backgroundColor: colors.background,
-		padding: 8,
+		padding: spacing.sm,
 		shadowColor: colors.black,
 		shadowOffset: {
 			width: 0,
-			height: 2,
+			height: spacing.xs,
 		},
 		shadowOpacity: 0.1,
-		shadowRadius: 3,
-		elevation: 3,
+		shadowRadius: spacing.xs,
+		elevation: spacing.xs,
 	},
 	image: {
 		width: '100%',
 		height: '100%',
 		resizeMode: 'contain',
 	},
-	correct: { borderColor: colors.success, borderWidth: 4 },
-	incorrect: { borderColor: colors.error, borderWidth: 4 },
+	correct: { borderColor: colors.success, borderWidth: spacing.xs },
+	incorrect: { borderColor: colors.error, borderWidth: spacing.xs },
 });

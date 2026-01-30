@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { BottomWaveSVG, TopWaveSVG } from '../components/SVG';
+
 import PillButton from '../components/PillButton';
-import { colors } from '../styles/theme';
+import { colors, typography } from '../styles/theme';
 
 export default function HomeScreen({ navigation }) {
 	return (
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
 		fontFamily: 'Plus Jakarta Sans, sans-serif',
 	},
 	title: {
-		fontSize: 48,
+		fontSize: typography.fontSizes.display,
 		color: colors.textLight,
 		fontWeight: '800',
 		marginBottom: 40,

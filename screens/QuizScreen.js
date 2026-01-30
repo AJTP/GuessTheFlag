@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 import { generateQuestion } from '../services/flagService';
 import FlagButton from '../components/FlagButton';
-import { TopLightWaveSVG, WavyHeader } from '../components/SVG';
-import { colors } from '../styles/theme';
+import { WavyHeader } from '../components/SVG';
+import { colors, typography, spacing } from '../styles/theme';
 
 export default function QuizScreen({ navigation }) {
 	const [question, setQuestion] = useState(null);
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
 	},
 	progressText: {
 		color: colors.textLight,
-		fontSize: 16,
+		fontSize: typography.fontSizes.md,
 		fontWeight: '800',
 	},
 	progressTextContainer: {
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 	},
 	countryName: {
-		fontSize: 28,
+		fontSize: typography.fontSizes.xxxl,
 		fontWeight: 'bold',
 		marginBottom: 30,
 		textAlign: 'center',
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
 		elevation: 10,
 	},
 	feedbackIcon: {
-		fontSize: 40,
+		fontSize: typography.fontSizes.xxxl,
 		color: colors.background,
 		fontWeight: 'bold',
 	},
