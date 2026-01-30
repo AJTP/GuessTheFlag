@@ -51,7 +51,7 @@ export const colors = {
 	transparent: 'transparent',
 };
 
-/* // Tamaños y espaciados
+// Tamaños y espaciados
 export const spacing = {
 	xs: 4,
 	sm: 8,
@@ -105,4 +105,4 @@ export const shadows = {
 		shadowRadius: 16,
 		elevation: 10,
 	},
-};*/
+};
