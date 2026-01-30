@@ -12,7 +12,7 @@ export default function QuizScreen({ navigation }) {
 	const [questionCount, setQuestionCount] = useState(0);
 	const slideAnim = useRef(new Animated.Value(100)).current;
 	const opacityAnim = useRef(new Animated.Value(0)).current;
-	const totalQuestions = 3;
+	const totalQuestions = 10;
 
 	useEffect(() => {
 		setQuestion(generateQuestion());

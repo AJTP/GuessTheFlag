@@ -61,12 +61,12 @@ export default function ResultScreen({ route, navigation }) {
 
 				<View style={styles.buttonsContainer}>
 					<PillButton
-						title="🔄 Jugar de Nuevo"
+						title="Jugar de Nuevo"
 						onPress={() => navigation.navigate('Quiz')}
 						style={styles.playAgainButton}
 					/>
 					<PillButton
-						title="🏠 Volver al Inicio"
+						title="Volver al Inicio"
 						onPress={() => navigation.navigate('Home')}
 						style={styles.homeButton}
 					/>
