@@ -1,11 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { generateQuestion } from '../services/flagService';
+import { getCountryName } from '../services/countryNames';
 import FlagButton from '../components/FlagButton';
 import { WavyHeader } from '../components/SVG';
 import { colors, typography, spacing } from '../styles/theme';
 
 export default function QuizScreen({ navigation }) {
+	const { t, i18n } = useTranslation();
 	const [question, setQuestion] = useState(null);
 	const [selected, setSelected] = useState(null);
 	const [score, setScore] = useState(0);
@@ -82,7 +85,7 @@ export default function QuizScreen({ navigation }) {
 		<View style={styles.container}>
 			<WavyHeader>
 				<View style={styles.progressTextContainer}>
-					<Text style={styles.progressText}>Pregunta {questionCount + 1}</Text>
+					<Text style={styles.progressText}>{t('question', { number: questionCount + 1 })}</Text>
 					<Text style={styles.progressText}>
 						{Math.round((questionCount / totalQuestions) * 100)}%
 					</Text>
@@ -99,9 +102,9 @@ export default function QuizScreen({ navigation }) {
 
 			<View style={styles.content}>
 				<Text style={styles.countryName}>
-					¿Cuál es la bandera de{' '}
+					{t('whichFlagIs')}
 					<Text style={{ color: colors.primaryDark, fontWeight: 'bold' }}>
-						{question.correct.countryName}
+						{getCountryName(question.correct.countryName, i18n.language)}
 					</Text>
 					?
 				</Text>

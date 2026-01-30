@@ -1,18 +1,20 @@
 import { View, Text, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { colors, typography, spacing } from '../styles/theme';
 import { WavyHeader } from '../components/SVG';
 import PillButton from '../components/PillButton';
 
 export default function ResultScreen({ route, navigation }) {
+	const { t } = useTranslation();
 	const { score, total } = route.params;
 	const percentage = Math.round((score / total) * 100);
 
 	const getScoreMessage = () => {
-		if (percentage === 100) return '¡PERFECTO! 🏆';
-		if (percentage >= 80) return '¡EXCELENTE! 🎉';
-		if (percentage >= 60) return '¡BIEN HECHO! 👍';
-		if (percentage >= 40) return '¡PUEDES MEJORAR! 💪';
-		return '¡SIGUE INTENTANDO! 🚀';
+		if (percentage === 100) return t('scoreMessages.perfect');
+		if (percentage >= 80) return t('scoreMessages.excellent');
+		if (percentage >= 60) return t('scoreMessages.good');
+		if (percentage >= 40) return t('scoreMessages.canImprove');
+		return t('scoreMessages.keepTrying');
 	};
 
 	const getScoreColor = () => {
@@ -25,8 +27,8 @@ export default function ResultScreen({ route, navigation }) {
 		<View style={styles.container}>
 			<WavyHeader>
 				<View style={styles.headerContent}>
-					<Text style={styles.headerTitle}>QUIZ COMPLETADO!</Text>
-					<Text style={styles.headerSubtitle}>Resultados finales</Text>
+					<Text style={styles.headerTitle}>{t('quizCompleted')}</Text>
+					<Text style={styles.headerSubtitle}>{t('finalResults')}</Text>
 				</View>
 			</WavyHeader>
 
@@ -47,26 +49,26 @@ export default function ResultScreen({ route, navigation }) {
 				<View style={styles.statsContainer}>
 					<View style={styles.statItem}>
 						<Text style={styles.statNumber}>{score}</Text>
-						<Text style={styles.statLabel}>Correctas</Text>
+						<Text style={styles.statLabel}>{t('correctAnswers')}</Text>
 					</View>
 					<View style={styles.statItem}>
 						<Text style={styles.statNumber}>{total - score}</Text>
-						<Text style={styles.statLabel}>Incorrectas</Text>
+						<Text style={styles.statLabel}>{t('incorrectAnswers')}</Text>
 					</View>
 					<View style={styles.statItem}>
 						<Text style={styles.statNumber}>{total}</Text>
-						<Text style={styles.statLabel}>Total</Text>
+						<Text style={styles.statLabel}>{t('total')}</Text>
 					</View>
 				</View>
 
 				<View style={styles.buttonsContainer}>
 					<PillButton
-						title="Jugar de Nuevo"
+						title={t('playAgain')}
 						onPress={() => navigation.navigate('Quiz')}
 						style={styles.playAgainButton}
 					/>
 					<PillButton
-						title="Volver al Inicio"
+						title={t('goHome')}
 						onPress={() => navigation.navigate('Home')}
 						style={styles.homeButton}
 					/>
