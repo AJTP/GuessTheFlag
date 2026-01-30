@@ -1,5 +1,14 @@
-import { Pressable, Image, StyleSheet } from 'react-native';
+import { Pressable, Image, StyleSheet, Dimensions } from 'react-native';
 import { colors } from '../styles/theme';
+
+const { width: screenWidth } = Dimensions.get('window');
+
+// Calcular el tamaño responsive de las banderas
+const paddingHorizontal = 36; // padding a los lados
+const gap = 15; // gap entre banderas
+const availableWidth = screenWidth - paddingHorizontal * 2 - gap;
+const flagWidth = Math.floor(availableWidth / 2);
+const flagHeight = Math.floor(flagWidth * 0.7); // proporción 1:0.7
 
 export default function FlagButton({ flag, onPress, selected, correct }) {
 	const isCorrect = selected && flag.countryName === correct.countryName;
@@ -23,8 +32,8 @@ export default function FlagButton({ flag, onPress, selected, correct }) {
 
 const styles = StyleSheet.create({
 	button: {
-		width: 160,
-		height: 114,
+		width: flagWidth,
+		height: flagHeight,
 		margin: 8,
 		borderWidth: 2,
 		borderColor: colors.borderColor,
