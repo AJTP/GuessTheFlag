@@ -8,7 +8,7 @@ export default function LanguageSelector({ visible, onClose }) {
 	const { t, i18n } = useTranslation();
 	const languages = getAvailableLanguages();
 
-	const handleLanguageChange = async (languageCode) => {
+	const handleLanguageChange = async languageCode => {
 		try {
 			await changeLanguage(languageCode);
 			onClose();
@@ -26,22 +26,27 @@ export default function LanguageSelector({ visible, onClose }) {
 		>
 			<View style={styles.centeredView}>
 				<View style={styles.modalView}>
-					<Text style={styles.modalTitle}>Seleccionar Idioma / Choose Language</Text>
-					
-					{languages.map((language) => (
+					<Text style={styles.modalTitle}>
+						Seleccionar Idioma / Choose Language
+					</Text>
+
+					{languages.map(language => (
 						<Pressable
 							key={language.code}
 							style={[
 								styles.languageOption,
-								i18n.language === language.code && styles.selectedLanguage
+								i18n.language === language.code && styles.selectedLanguage,
 							]}
 							onPress={() => handleLanguageChange(language.code)}
 						>
 							<Text style={styles.flag}>{language.flag}</Text>
-							<Text style={[
-								styles.languageName,
-								i18n.language === language.code && styles.selectedLanguageText
-							]}>
+							<Text
+								style={[
+									styles.languageName,
+									i18n.language === language.code &&
+										styles.selectedLanguageText,
+								]}
+							>
 								{language.name}
 							</Text>
 							{i18n.language === language.code && (
@@ -49,7 +54,7 @@ export default function LanguageSelector({ visible, onClose }) {
 							)}
 						</Pressable>
 					))}
-					
+
 					<Pressable style={styles.closeButton} onPress={onClose}>
 						<Text style={styles.closeButtonText}>Cerrar / Close</Text>
 					</Pressable>

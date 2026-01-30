@@ -85,7 +85,9 @@ export default function QuizScreen({ navigation }) {
 		<View style={styles.container}>
 			<WavyHeader>
 				<View style={styles.progressTextContainer}>
-					<Text style={styles.progressText}>{t('question', { number: questionCount + 1 })}</Text>
+					<Text style={styles.progressText}>
+						{t('question', { number: questionCount + 1 })}
+					</Text>
 					<Text style={styles.progressText}>
 						{Math.round((questionCount / totalQuestions) * 100)}%
 					</Text>

@@ -14,15 +14,15 @@ export default function HomeScreen({ navigation }) {
 	return (
 		<View style={styles.container}>
 			<TopWaveSVG />
-			
+
 			{/* Botón de idioma en la esquina superior derecha */}
-			<Pressable 
+			<Pressable
 				style={styles.languageButton}
 				onPress={() => setLanguageModalVisible(true)}
 			>
 				<Text style={styles.languageButtonText}>🌐</Text>
 			</Pressable>
-			
+
 			<Text style={styles.title}>{t('appTitle')}</Text>
 
 			<View style={styles.buttonsContainer}>
@@ -34,15 +34,12 @@ export default function HomeScreen({ navigation }) {
 					title={t('options')}
 					onPress={() => alert(t('optionsNotImplemented'))}
 				/>
-				<PillButton
-					title={t('about')}
-					onPress={() => alert(t('aboutApp'))}
-				/>
+				<PillButton title={t('about')} onPress={() => alert(t('aboutApp'))} />
 			</View>
 
 			<BottomWaveSVG />
-			
-			<LanguageSelector 
+
+			<LanguageSelector
 				visible={languageModalVisible}
 				onClose={() => setLanguageModalVisible(false)}
 			/>

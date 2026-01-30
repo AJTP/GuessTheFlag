@@ -5,5 +5,5 @@ import fr from './fr';
 export default {
 	es,
 	en,
-	fr
+	fr,
 };

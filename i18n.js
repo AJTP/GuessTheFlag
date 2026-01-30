@@ -19,14 +19,14 @@ i18n
 		resources: translations,
 		lng: getDeviceLanguage(), // Idioma por defecto basado en el dispositivo
 		fallbackLng: 'es', // Idioma de respaldo
-		
+
 		interpolation: {
 			escapeValue: false, // React ya escapa los valores por defecto
 		},
-		
+
 		// Configuración adicional para React Native
 		compatibilityJSON: 'v3',
-		
+
 		// Debug solo en desarrollo
 		debug: __DEV__,
 	});
@@ -34,7 +34,7 @@ i18n
 export default i18n;
 
 // Hook personalizado para cambiar idioma y recargar
-export const changeLanguage = (language) => {
+export const changeLanguage = language => {
 	return i18n.changeLanguage(language);
 };
 

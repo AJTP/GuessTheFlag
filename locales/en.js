@@ -30,7 +30,7 @@ export default {
 			excellent: 'EXCELLENT! 🎉',
 			good: 'WELL DONE! 👍',
 			canImprove: 'YOU CAN IMPROVE! 💪',
-			keepTrying: 'KEEP TRYING! 🚀'
-		}
-	}
+			keepTrying: 'KEEP TRYING! 🚀',
+		},
+	},
 };

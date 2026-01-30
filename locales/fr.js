@@ -8,7 +8,7 @@ export default {
 
 		// Messages d'alerte
 		optionsNotImplemented: 'Options pas encore implémentées',
-		aboutApp: 'À propos de l\'app',
+		aboutApp: "À propos de l'app",
 
 		// Quiz
 		question: 'Question {{number}}',
@@ -22,15 +22,15 @@ export default {
 		incorrectAnswers: 'Incorrectes',
 		total: 'Total',
 		playAgain: 'Rejouer',
-		goHome: 'Retour à l\'accueil',
+		goHome: "Retour à l'accueil",
 
 		// Messages de score
 		scoreMessages: {
 			perfect: 'PARFAIT! 🏆',
 			excellent: 'EXCELLENT! 🎉',
 			good: 'BIEN JOUÉ! 👍',
-			canImprove: 'TU PEUX T\'AMÉLIORER! 💪',
-			keepTrying: 'CONTINUE D\'ESSAYER! 🚀'
-		}
-	}
+			canImprove: "TU PEUX T'AMÉLIORER! 💪",
+			keepTrying: "CONTINUE D'ESSAYER! 🚀",
+		},
+	},
 };
