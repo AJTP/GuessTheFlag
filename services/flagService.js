@@ -477,6 +477,11 @@ export function generateQuestion(count = 4) {
 }
 
 export function generateGame(questionsCount = 10, optionsCount = 4) {
+	if (questionsCount > flags.length) {
+		throw new Error(
+			'No se pueden generar más preguntas que el número total de items disponibles'
+		);
+	}
 	const questions = [];
 	for (let i = 0; i < questionsCount; i++) {
 		questions.push(generateQuestion(optionsCount));

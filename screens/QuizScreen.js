@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import { View, Text, StyleSheet, Animated, Pressable } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { generateGame } from '../services/flagService';
 import { getCountryName } from '../services/countryNames';
 import FlagButton from '../components/FlagButton';
 import { WavyHeader } from '../components/SVG';
 import { colors, typography, spacing } from '../styles/theme';
+import { ArrowLeft } from 'react-native-feather';
 
 export default function QuizScreen({ navigation }) {
 	const { t, i18n } = useTranslation();
@@ -15,7 +16,7 @@ export default function QuizScreen({ navigation }) {
 	const [questionCount, setQuestionCount] = useState(0);
 	const slideAnim = useRef(new Animated.Value(100)).current;
 	const opacityAnim = useRef(new Animated.Value(0)).current;
-	const gameQuestions = useRef(generateGame(10)).current;
+	const gameQuestions = useRef(generateGame(3)).current;
 
 	useEffect(() => {
 		setQuestion(gameQuestions[questionCount]);
@@ -84,6 +85,19 @@ export default function QuizScreen({ navigation }) {
 	return (
 		<View style={styles.container}>
 			<WavyHeader>
+				<View style={styles.quitButtonContainer}>
+					<Pressable
+						onPress={() => navigation.navigate('Home')}
+						style={styles.quitButton}
+					>
+						<ArrowLeft
+							width={28}
+							height={28}
+							stroke={colors.textLight}
+							strokeWidth={2.5}
+						/>
+					</Pressable>
+				</View>
 				<View style={styles.progressTextContainer}>
 					<Text style={styles.progressText}>
 						{t('question', { number: questionCount + 1 })}
@@ -159,10 +173,28 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 20,
 		paddingTop: 40,
 	},
+	quitButtonContainer: {
+		width: spacing.xxl,
+		height: spacing.xl,
+	},
+
+	quitButton: {
+		flex: 1,
+		justifyContent: 'flex-start',
+		alignItems: 'flex-start',
+	},
+
+	quitButtonText: {
+		fontSize: typography.fontSizes.xxxl,
+		lineHeight: typography.fontSizes.xxxl,
+		color: colors.textLight,
+		fontWeight: typography.fontWeights.semiBold,
+	},
+
 	progressText: {
 		color: colors.textLight,
 		fontSize: typography.fontSizes.md,
-		fontWeight: '800',
+		fontWeight: typography.fontWeights.extraBold,
 	},
 	progressTextContainer: {
 		flexDirection: 'row',
@@ -183,7 +215,7 @@ const styles = StyleSheet.create({
 	},
 	countryName: {
 		fontSize: typography.fontSizes.xxxl,
-		fontWeight: 'bold',
+		fontWeight: typography.fontWeights.bold,
 		marginBottom: 30,
 		textAlign: 'center',
 	},
@@ -213,6 +245,6 @@ const styles = StyleSheet.create({
 	feedbackIcon: {
 		fontSize: typography.fontSizes.xxxl,
 		color: colors.background,
-		fontWeight: 'bold',
+		fontWeight: typography.fontWeights.bold,
 	},
 });
