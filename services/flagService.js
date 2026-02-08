@@ -475,3 +475,19 @@ export function generateQuestion(count = 4) {
 	const correct = options[Math.floor(Math.random() * options.length)];
 	return { options, correct };
 }
+
+export function generateGame(questionsCount = 10, optionsCount = 4) {
+	const questions = [];
+	for (let i = 0; i < questionsCount; i++) {
+		questions.push(generateQuestion(optionsCount));
+		if (questions.length > 1) {
+			while (
+				questions[i].correct.countryName ===
+				questions[i - 1].correct.countryName
+			) {
+				questions[i] = generateQuestion(optionsCount);
+			}
+		}
+	}
+	return questions;
+}

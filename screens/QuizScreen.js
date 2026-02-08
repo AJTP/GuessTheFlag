@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { generateQuestion } from '../services/flagService';
+import { generateGame } from '../services/flagService';
 import { getCountryName } from '../services/countryNames';
 import FlagButton from '../components/FlagButton';
 import { WavyHeader } from '../components/SVG';
@@ -15,10 +15,10 @@ export default function QuizScreen({ navigation }) {
 	const [questionCount, setQuestionCount] = useState(0);
 	const slideAnim = useRef(new Animated.Value(100)).current;
 	const opacityAnim = useRef(new Animated.Value(0)).current;
-	const totalQuestions = 10;
+	const gameQuestions = useRef(generateGame(10)).current;
 
 	useEffect(() => {
-		setQuestion(generateQuestion());
+		setQuestion(gameQuestions[questionCount]);
 		setSelected(null);
 	}, [questionCount]);
 
@@ -66,13 +66,13 @@ export default function QuizScreen({ navigation }) {
 				slideAnim.setValue(100);
 				opacityAnim.setValue(0);
 
-				if (questionCount + 1 < totalQuestions) {
+				if (questionCount + 1 < gameQuestions.length) {
 					setQuestionCount(questionCount + 1);
 				} else {
 					// Usar el newScore calculado, no el score del estado
 					navigation.navigate('Result', {
 						score: newScore,
-						total: totalQuestions,
+						total: gameQuestions.length,
 					});
 				}
 			});
@@ -89,14 +89,14 @@ export default function QuizScreen({ navigation }) {
 						{t('question', { number: questionCount + 1 })}
 					</Text>
 					<Text style={styles.progressText}>
-						{Math.round((questionCount / totalQuestions) * 100)}%
+						{Math.round((questionCount / gameQuestions.length) * 100)}%
 					</Text>
 				</View>
 				<View style={styles.progressBarContainer}>
 					<View
 						style={[
 							styles.progressFill,
-							{ width: `${(questionCount / totalQuestions) * 100}%` },
+							{ width: `${(questionCount / gameQuestions.length) * 100}%` },
 						]}
 					></View>
 				</View>
