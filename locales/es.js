@@ -1,5 +1,7 @@
 export default {
 	translation: {
+		close: 'Cerrar',
+		selectLanguage: 'Seleccionar Idioma',
 		// Pantalla principal
 		appTitle: 'GuessTheFlag!',
 		startQuiz: 'Iniciar Quiz',

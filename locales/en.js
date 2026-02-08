@@ -1,5 +1,7 @@
 export default {
 	translation: {
+		close: 'Close',
+		selectLanguage: 'Select Language',
 		// Main screen
 		appTitle: 'GuessTheFlag!',
 		startQuiz: 'Start Quiz',

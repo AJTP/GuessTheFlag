@@ -1,5 +1,7 @@
 export default {
 	translation: {
+		close: 'Fermer',
+		selectLanguage: 'Sélectionner la langue',
 		// Écran principal
 		appTitle: 'DevinesDrapeau!',
 		startQuiz: 'Commencer le Quiz',

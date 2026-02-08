@@ -87,7 +87,7 @@ export default function QuizScreen({ navigation }) {
 			<WavyHeader>
 				<View style={styles.quitButtonContainer}>
 					<Pressable
-						onPress={() => navigation.navigate('Home')}
+						onPress={() => navigation.goBack()}
 						style={styles.quitButton}
 					>
 						<ArrowLeft

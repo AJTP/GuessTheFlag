@@ -1,27 +1,16 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { BottomWaveSVG, TopWaveSVG } from '../components/SVG';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
 
 import PillButton from '../components/PillButton';
-import LanguageSelector from '../components/LanguageSelector';
 import { colors, typography } from '../styles/theme';
 
 export default function HomeScreen({ navigation }) {
 	const { t } = useTranslation();
-	const [languageModalVisible, setLanguageModalVisible] = useState(false);
 
 	return (
 		<View style={styles.container}>
 			<TopWaveSVG />
-
-			{/* Botón de idioma en la esquina superior derecha */}
-			<Pressable
-				style={styles.languageButton}
-				onPress={() => setLanguageModalVisible(true)}
-			>
-				<Text style={styles.languageButtonText}>🌐</Text>
-			</Pressable>
 
 			<Text style={styles.title}>{t('appTitle')}</Text>
 
@@ -32,17 +21,12 @@ export default function HomeScreen({ navigation }) {
 				/>
 				<PillButton
 					title={t('options')}
-					onPress={() => alert(t('optionsNotImplemented'))}
+					onPress={() => navigation.navigate('Options')}
 				/>
 				<PillButton title={t('about')} onPress={() => alert(t('aboutApp'))} />
 			</View>
 
 			<BottomWaveSVG />
-
-			<LanguageSelector
-				visible={languageModalVisible}
-				onClose={() => setLanguageModalVisible(false)}
-			/>
 		</View>
 	);
 }
