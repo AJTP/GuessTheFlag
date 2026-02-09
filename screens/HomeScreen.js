@@ -23,7 +23,7 @@ export default function HomeScreen({ navigation }) {
 					title={t('options')}
 					onPress={() => navigation.navigate('Options')}
 				/>
-				<PillButton title={t('about')} onPress={() => alert(t('aboutApp'))} />
+				{/* <PillButton title={t('about')} onPress={() => alert(t('aboutApp'))} /> */}
 			</View>
 
 			<BottomWaveSVG />
