@@ -1,3 +1,30 @@
+PRERELEASE
+- Configurar iconos, splash screen, nombre...
+- Solo pedir permisos necesarios
+- Verificasr firma de app
+- Versión mínima
+- Pruebas offline
+- Iconos en todas las resoluciones necesarias
+- Capturas de Pantalla mockup
+- Video mockup
+- Palabras clave
+- Versionado
+- Build config
+
+POSTRELEASE
+- Modo progresivo, dificultad en aumento, preguntas fijas agrupadas por temas
 - Pantalla resumen con información sobre las banderas adivinadas, % de aciertos etc
 - Modo de juego ahorcado
 - Modo de juego adivina el nombre con autocompletar
+- Logros
+    - Racha aciertos consecutivos
+    - Desafios diarios
+    - Badges
+        - Acerté 10 banderas seguidas
+        - Maestro de Europa
+    - Leaderboard
+- Microtransacciones opcionales
+    - Pistas
+    - Desbloqueo de niveles
+    - Modos especiales
+- Publicidad
